@@ -1,12 +1,17 @@
 import React from "react";
-import Jumbotron from "../components/jumbotron"
+import ContentContainer from "../components/ContentContainer";
+import ContentCard from "../components/contentcard";
+import SearchBar from "../components/searchbar";
 
-function Search(){
-    return(
-        <Jumbotron>
-            <h1>Google Book Search!</h1>
-        </Jumbotron>
-    )
-}
+const Search = () => (
+        <div className="container">
+            <SearchBar/>
+            <ContentContainer>
+                <ContentCard/>
+
+                <ContentCard/>
+            </ContentContainer>
+        </div>
+)
 
 export default Search;

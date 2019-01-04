@@ -6,5 +6,10 @@ const bookSchema = new Schema({
     authors: { type: Array, required: true},
     description: String,
     image: String,
-    link: String
-})
+    link: String,
+    dateAdded:{ type: Date, default: Date.now }
+});
+
+const Book = mongoose.model("Book", bookSchema);
+
+module.exports = Book;

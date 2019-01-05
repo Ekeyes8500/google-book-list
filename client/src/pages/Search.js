@@ -10,15 +10,19 @@ class Search extends Component {
         resultArray: [],
         input:""
     }
+    //function to handle API queries to the google books database
     apiQuery = (query) => {
         API.searchBookTitle(query)
-        .then(res =>
-            console.log(res)
-            )
+        .then(res => this.updateResults(res.data))
+    }
+
+    updateResults(data){
+        console.log(data)
+        this.setState({resultArray: data.items})
     }
 
     componentDidMount(){
-        this.apiQuery();
+        console.log("ready")
     }
 
     handleChange(event) {
@@ -27,7 +31,7 @@ class Search extends Component {
     }
 
     handleClick() {
-        console.log(this.state.input);
+        this.apiQuery(this.state.input);
     }
 
     searchBook(){
@@ -46,9 +50,9 @@ class Search extends Component {
                 handleClick={this.handleClick.bind(this)}
             />
             <ContentContainer>
-                <ContentCard/>
-    
-                <ContentCard/>
+                {this.state.resultArray.map(result=>(
+                    <ContentCard/>
+                ))}
             </ContentContainer>
         </div>
         )

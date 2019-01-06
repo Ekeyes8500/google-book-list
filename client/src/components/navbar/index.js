@@ -9,7 +9,7 @@ function Nav(){
         <a className="nav-link" href="/">Searched</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/">Saved</a>
+        <a className="nav-link" href="/saved">Saved</a>
       </li>
     </ul>
     </nav>

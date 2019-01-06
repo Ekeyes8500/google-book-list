@@ -22,6 +22,20 @@ class Search extends Component {
         this.setState({resultArray: data.items})
     }
 
+    createEntry(book){
+        console.log(book);
+        let exportObject = {
+             title: book.volumeInfo.title,
+             authors: book.volumeInfo.authors,
+             description: book.volumeInfo.description,
+             image: book.volumeInfo.imageLinks.thumbnail,
+             link: book.volumeInfo.infoLink
+         }
+         API.addSaved(exportObject)
+         .then(res => console.log(res))
+         .catch(err => console.log(err))
+    }
+
     componentDidMount(){
         console.log("ready")
     }
@@ -62,7 +76,7 @@ class Search extends Component {
                     authors={result.volumeInfo.authors}
                     description={result.volumeInfo.description}
                     >
-                        <SaveButton/>
+                        <SaveButton onClick={()=>this.createEntry(result)}/>
                     </ContentCard>
                 ))}
             </ContentContainer>

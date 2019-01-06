@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import ContentContainer from "../components/ContentContainer";
 import ContentCard from "../components/contentcard";
 import SearchBar from "../components/searchbar";
-import SubmitButton from "../components/submitbutton"
-import API from "../utils/API"
+import SubmitButton from "../components/submitbutton";
+import SaveButton from "../components/savebutton";
+import API from "../utils/API";
 
 class Search extends Component {
     state = {
@@ -34,6 +35,7 @@ class Search extends Component {
         this.apiQuery(this.state.input);
     }
 
+
     searchBook(){
 
     }     
@@ -44,14 +46,24 @@ class Search extends Component {
             value={this.state.input}
             handleChange={this.handleChange.bind(this)}
             >
-   
+                <SubmitButton
+                    handleClick={this.handleClick.bind(this)}
+                />
             </SearchBar>
-            <SubmitButton
-                handleClick={this.handleClick.bind(this)}
-            />
+
             <ContentContainer>
                 {this.state.resultArray.map(result=>(
-                    <ContentCard/>
+    
+                    <ContentCard
+                    key={result.id}
+                    imageLink={result.volumeInfo.imageLinks.thumbnail}
+                    bookTitle={result.volumeInfo.title}
+                    bookLink={result.volumeInfo.infoLink}
+                    authors={result.volumeInfo.authors}
+                    description={result.volumeInfo.description}
+                    >
+                        <SaveButton/>
+                    </ContentCard>
                 ))}
             </ContentContainer>
         </div>

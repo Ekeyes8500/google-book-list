@@ -1,14 +1,17 @@
 import React from "react";
+// import "./style.css";
 
 const ContentCard = props => (
-    <div className="card flex-row flex-wrap mt-2 mr-1 ml-1">
+    <div className="card flex-row flex-wrap mt-2 mr-1 ml-1 mb-3 pb-2">
         <div className="card-header border-0">
-            <img src="//placehold.it/200" alt=""/>
+            <img src={props.imageLink} alt="" className="bookPhoto"/>
         </div>
         <div className="card-block px-2">
-            <h4 className="card-title">Title</h4>
-            <p className="card-text">Description</p>
-            <a href="#" className="btn btn-primary">BUTTON</a>
+            <h4 className="card-title">{props.bookTitle}</h4>
+            <h5 className="card-body">{props.authors[0]}</h5>
+            <p className="card-text">{props.description}</p>
+            {props.children}
+            <a href={props.bookLink} className="btn btn-secondary mb-3 d-inline" target="_blank">Link to book</a>
         </div>
     </div>
 )

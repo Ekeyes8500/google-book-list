@@ -1,29 +1,15 @@
-# Create React Express App
+# Google Book List
 
-## About This Boilerplate
+## Introduction
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Google Book List is a simple React web application that allows users to search the Google Books API and save specific books to a MongoDB/Mongoose Database! 
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+### Tech Stack
 
-## Starting the app locally
+### Front End
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+- Built with a React.js Front end
 
-```
-yarn install
-```
+### Back End 
 
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-yarn start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+- Back end created with node.js, express, and Mongo/Mongoose

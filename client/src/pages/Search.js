@@ -19,7 +19,10 @@ class Search extends Component {
 
     updateResults(data){
         console.log(data)
-        this.setState({resultArray: data.items})
+        if (data.items.length > 0){
+            this.setState({resultArray: data.items})
+        }
+        
     }
 
     createEntry(book){
@@ -62,7 +65,7 @@ class Search extends Component {
             </SearchBar>
 
             <ContentContainer>
-                {this.state.resultArray.map(result=>(
+                {this.state && this.state.resultArray && this.state.resultArray.map(result=>(
     
                     <ContentCard
                     key={result.id}

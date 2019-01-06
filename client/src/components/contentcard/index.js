@@ -8,7 +8,9 @@ const ContentCard = props => (
         </div>
         <div className="card-block px-2">
             <h4 className="card-title">{props.bookTitle}</h4>
-            <h5 className="card-body">{props.authors[0]}</h5>
+            {props.authors.map(author =>(
+                <h5 className="card-body">{author}</h5>
+            ))}
             <p className="card-text">{props.description}</p>
             {props.children}
             <a href={props.bookLink} className="btn btn-secondary mb-3 d-inline" target="_blank">Link to book</a>

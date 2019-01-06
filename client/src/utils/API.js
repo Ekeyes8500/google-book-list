@@ -14,5 +14,9 @@ export default {
 
     findAll: function(){
         return axios.get("/api/books")
+    },
+
+    deleteOne: function(bookId){
+        return axios.delete("/api/books/" + bookId)
     }
 }

@@ -11,6 +11,7 @@ class Saved extends Component {
     componentDidMount(){
         this.findBooks();
     }
+
     findBooks = () => (
         API.findAll()
         .then(res=>
@@ -18,6 +19,12 @@ class Saved extends Component {
         )
         .catch(err=>err)
     )
+    deleteBook = (id) => (
+        API.deleteOne(id)
+        .then(res => this.findBooks())
+        .catch(err => console.log(err))
+    )
+
     render(){
         return(
         <ContentContainer>
@@ -31,7 +38,7 @@ class Saved extends Component {
                 authors={result.authors}
                 description={result.description}
                 >
-                <DeleteButton/>
+                <DeleteButton onClick={()=>this.deleteBook(result._id)}/>
                 </ContentCard>
             ))}
         </ContentContainer>

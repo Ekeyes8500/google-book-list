@@ -46,11 +46,11 @@ class Search extends Component {
 
     createEntry(book){
         let exportObject = {
-             title: book.volumeInfo.title,
-             authors: book.volumeInfo.authors,
-             description: book.volumeInfo.description,
-             image: book.volumeInfo.imageLinks.thumbnail,
-             link: book.volumeInfo.infoLink
+             title: book.bookTitle,
+             authors: book.authors,
+             description: book.description,
+             image: book.imageLink,
+             link: book.bookLink
          }
 
          API.addSaved(exportObject)

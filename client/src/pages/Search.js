@@ -18,15 +18,33 @@ class Search extends Component {
     }
 
     updateResults(data){
-        console.log(data)
-        if (data.items.length > 0){
-            this.setState({resultArray: data.items})
+        let newArray = [];
+        for (let i = 0; i < data.items.length; i++){
+            console.log(data.items[i])
+            let newObj = {
+                key:"",
+                bookTitle:"",
+                bookLink:"",
+                imageLink:"",
+                authors:[],
+                description:""
+            }
+            newObj.key = data.items[i].id;
+            newObj.bookTitle = data.items[i].volumeInfo.title;
+            newObj.bookLink = data.items[i].volumeInfo.infoLink;
+            newObj.authors = data.items[i].volumeInfo.authors;
+            newObj.description = data.items[i].volumeInfo.description;
+            if (typeof data.items[i].volumeInfo.imageLinks != "undefined"){
+
+                newObj.imageLink = data.items[i].volumeInfo.imageLinks.thumbnail
+            }
+            newArray.push(newObj);
         }
-        
+        this.setState({resultArray: newArray})
+
     }
 
     createEntry(book){
-        console.log(book);
         let exportObject = {
              title: book.volumeInfo.title,
              authors: book.volumeInfo.authors,
@@ -34,6 +52,7 @@ class Search extends Component {
              image: book.volumeInfo.imageLinks.thumbnail,
              link: book.volumeInfo.infoLink
          }
+
          API.addSaved(exportObject)
          .then(res => console.log(res))
          .catch(err => console.log(err))
@@ -45,7 +64,6 @@ class Search extends Component {
 
     handleChange(event) {
         this.setState({input: event.target.value})
-        console.log(this.state.input)
     }
 
     handleClick() {
@@ -65,15 +83,15 @@ class Search extends Component {
             </SearchBar>
 
             <ContentContainer>
-                {this.state && this.state.resultArray && this.state.resultArray.map(result=>(
+                {this.state.resultArray.map(result=>(
     
                     <ContentCard
-                    key={result.id}
-                    imageLink={result.volumeInfo.imageLinks.thumbnail}
-                    bookTitle={result.volumeInfo.title}
-                    bookLink={result.volumeInfo.infoLink}
-                    authors={result.volumeInfo.authors}
-                    description={result.volumeInfo.description}
+                    key={result.key}
+                    imageLink={result.imageLink}
+                    bookTitle={result.bookTitle}
+                    bookLink={result.bookLink}
+                    authors={result.authors}
+                    description={result.description}
                     >
                         <SaveButton onClick={()=>this.createEntry(result)}/>
                     </ContentCard>

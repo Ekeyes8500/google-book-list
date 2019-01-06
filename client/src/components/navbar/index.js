@@ -6,7 +6,7 @@ function Nav(){
         <a className="navbar-brand" href="#">Google Books</a>
         <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="/">Searched</a>
+        <a className="nav-link" href="/">Search</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/saved">Saved</a>

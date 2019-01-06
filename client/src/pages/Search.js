@@ -49,10 +49,6 @@ class Search extends Component {
         this.apiQuery(this.state.input);
     }
 
-
-    searchBook(){
-
-    }     
     render(){
         return(
         <div className="container">

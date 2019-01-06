@@ -10,5 +10,9 @@ export default {
 
     addSaved: function(bookData){
         return axios.post("/api/books", bookData)
+    },
+
+    findAll: function(){
+        return axios.get("/api/books")
     }
 }
